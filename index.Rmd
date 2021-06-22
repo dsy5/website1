@@ -1,5 +1,5 @@
 ---
-title: "Euro 2020 Soccer Player Birth Months"
+title: "Euro 2021 Soccer Player Birth Months"
 description: |
  Examination of the birth months of players at Euro 2020
 site: distill::distill_website
@@ -15,5 +15,18 @@ knitr::opts_chunk$set(echo = FALSE)
 # https://rstudio.github.io/distill/publish_website.html#github-pages
 
 library(tidyverse)
+```
+
+```{r fig.height = 10, fig.width = 12}
+data <- read_csv("~/Downloads/birthdates.csv")
+data%>%
+  mutate(data_of_birth = str_sub(value, 2, 11))%>%
+  mutate(month = str_sub(value, 7, 8))%>%
+  mutate(month = as.character(month))%>%
+  group_by(month)%>%arrange((month))%>%
+  summarize(total = n())%>%
+  ggplot(mapping = aes(x = month, y = total)) + geom_col() + 
+  theme(text = element_text(size=20)) + 
+  labs(title= "A Distribution of Euro 2020 Soccer Player Birth Months", subtitle = "The Most Soccer Players Are Born In March", x = "Month (By Number)", y = "Number of Soccer Players", caption = "Data: Wikipedia")
 ```
 
