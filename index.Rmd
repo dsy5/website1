@@ -1,5 +1,5 @@
 ---
-title: "Euro 2021 Soccer Player Birth Months"
+title: "Euro 2020 Soccer Player Birth Months"
 description: |
  Examination of the birth months of players at Euro 2020
 site: distill::distill_website
